@@ -1,0 +1,13 @@
+{
+	"name": "management-financial-movements",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start:dev:server": "cd backend && pnpm start:dev",
+		"start:dev:client": "cd client && pnpm dev"
+	},
+	"keywords": [],
+	"author": "Julian Garcia <jcgrrincon@gmail.com>",
+	"license": "MIT"
+}
