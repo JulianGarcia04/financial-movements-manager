@@ -13,7 +13,7 @@ export class TwilioService {
 
   async sendVerifyToken(phone: string) {
     return await this.client.verify.v2
-      .services('VA1f159ba571391a2b1b852eb278953d01')
+      .services(this.configService.get<string>('TWILIO_VERIFY_SERVICE'))
       .verifications.create({
         to: phone,
         channel: 'sms',
@@ -22,7 +22,7 @@ export class TwilioService {
 
   async verifyCodeSent(phone: string, code: string) {
     return await this.client.verify.v2
-      .services('VA1f159ba571391a2b1b852eb278953d01')
+      .services(this.configService.get<string>('TWILIO_VERIFY_SERVICE'))
       .verificationChecks.create({
         to: phone,
         code: code,

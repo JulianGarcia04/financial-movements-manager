@@ -1,93 +1,103 @@
 # ikualo-project
 
+## README.md
 
+### Descripción del proyecto
 
-## Getting started
+Este proyecto se compone de dos partes: un servidor cliente y un servidor backend. El servidor cliente se encarga de mostrar una interfaz gráfica al usuario, mientras que el servidor backend se encarga de procesar las solicitudes del cliente y almacenar los datos.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Requisitos previos
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Para ejecutar este proyecto, necesitarás lo siguiente:
 
-## Add your files
+- **Node.js:** Puedes descargarlo desde [https://nodejs.org/en/download/package-manager](https://nodejs.org/en/download/package-manager).
+- **npm:** Viene instalado con Node.js.
+- **pnpm:** Puedes descargarlo desde [https://pnpm.io/es/installation#usando-pnpm](https://pnpm.io/es/installation#usando-pnpm).
+- **Git:** Puedes descargarlo desde [https://www.git-scm.com/download/win](https://www.git-scm.com/download/win).
+- **Docker:** Puedes descargarlo desde [https://docs.docker.com/get-started/](https://docs.docker.com/get-started/).
+- **Twilio Account:** Este servicio se utiliza para la verificación en dos pasos [https://login.twilio.com/u/signup?state=hKFo2SBvQWtzX3Y5VzI1cUlWZ29Va3BTLTR6S2MzYk5EemdQeaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGhBMEtEQ014b1NHdDJTb1pseUFEQ1hDQUN0bXNDRVhKo2NpZNkgTW05M1lTTDVSclpmNzdobUlKZFI3QktZYjZPOXV1cks](https://login.twilio.com/u/signup?state=hKFo2SBvQWtzX3Y5VzI1cUlWZ29Va3BTLTR6S2MzYk5EemdQeaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGhBMEtEQ014b1NHdDJTb1pseUFEQ1hDQUN0bXNDRVhKo2NpZNkgTW05M1lTTDVSclpmNzdobUlKZFI3QktZYjZPOXV1cks)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Configuración
 
+1. Clona este repositorio en tu ordenador local:
+
+```bash
+git clone https://gitlab.com/gitlab-org/gitlab
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/me9074223/ikualo-project.git
-git branch -M main
-git push -uf origin main
+
+2. Accede al directorio del proyecto:
+
+```bash
+cd mi-proyecto
 ```
 
-## Integrate with your tools
+3. Instala las dependencias del proyecto:
 
-- [ ] [Set up project integrations](https://gitlab.com/me9074223/ikualo-project/-/settings/integrations)
+```bash
+npm install
+```
 
-## Collaborate with your team
+### Ejecución del servidor
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+#### Servidor cliente
 
-## Test and Deploy
+Para ejecutar el servidor cliente, ejecuta el siguiente comando:
 
-Use the built-in continuous integration in GitLab.
+```bash
+pnpm start:dev:client
+```
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+ó
 
-***
+```bash
+npm run start:dev:client
+```
 
-# Editing this README
+Esto abrirá una nueva ventana del navegador con la interfaz gráfica del proyecto.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Esto iniciara el servidor backend en el puerto 9000.
 
-## Suggestions for a good README
+#### Servidor backend
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Para ejecutar el servidor backend, ejecuta el siguiente comando:
 
-## Name
-Choose a self-explaining name for your project.
+```bash
+pnpm start:dev:server
+```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+ó
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+```bash
+npm run start:dev:server
+```
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+El backend necesitará una variables de entorno necesarias para funcionar y tener disponibles todas las funcionalidades
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+```typescript
+interface Env {
+	TWILIO_ACCOUNT_SID: string;
+	TWILIO_AUTH_TOKEN: string;
+	TWILIO_VERIFY_SERVICE: string;
+	DB_URI: string;
+	JWT_SECRET: string;
+}
+```
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Esto iniciará el servidor backend en el puerto 3000.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Pruebas
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Para probar el proyecto, puedes abrir la interfaz gráfica del servidor cliente en tu navegador web y seguir las instrucciones en pantalla.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Notas
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+- Asegúrate de tener Node.js y npm instalados y configurados correctamente antes de continuar.
+- Si tienes algún problema al ejecutar el proyecto, consulta la documentación de Node.js y npm para obtener más información.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### Contribuciones
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Se agradecen las contribuciones a este proyecto. Si encuentras un error o quieres añadir una nueva función, no dudes en crear una solicitud de extracción.
 
-## License
-For open source projects, say how it is licensed.
+### Licencia
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Este proyecto está bajo la licencia MIT. Para obtener más información, consulta el archivo LICENSE.md.
