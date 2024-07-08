@@ -17,3 +17,18 @@ export const UserSchema = z.object({
 });
 
 export type User = z.infer<typeof UserSchema>;
+
+export const CreateUserSchema = z.object({
+  username: z.string(),
+  phone: z.string(),
+  birthdate: z.preprocess((val) => {
+    if (typeof val !== 'string') {
+      return;
+    }
+
+    return new Date(val);
+  }, z.date()),
+  email: z.string(),
+});
+
+export type CreateUser = z.infer<typeof CreateUserSchema>;

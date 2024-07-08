@@ -40,7 +40,11 @@ export default route(function (/* { store, ssrContext } */) {
   Router.beforeEach(async (to, from, next) => {
     const authStore = useAuthStore();
 
-    if (from.fullPath === to.fullPath) {
+    const excludeRoutes = ['/register'];
+
+    console.log(to.fullPath);
+
+    if (from.fullPath === to.fullPath || excludeRoutes.includes(to.fullPath)) {
       next();
     }
 
