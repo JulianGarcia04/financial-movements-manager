@@ -1,4 +1,4 @@
-# ikualo-project
+# financial-movements-manager-project
 
 ## README.md
 
