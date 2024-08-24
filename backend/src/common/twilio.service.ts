@@ -7,6 +7,9 @@ export class TwilioService {
   private client: Twilio = new Twilio(
     this.configService.get<string>('TWILIO_ACCOUNT_SID'),
     this.configService.get<string>('TWILIO_AUTH_TOKEN'),
+    {
+      accountSid: this.configService.get<string>('TWILIO_ACCOUNT_SID'),
+    },
   );
 
   constructor(private configService: ConfigService) {}

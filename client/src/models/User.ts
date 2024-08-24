@@ -22,12 +22,12 @@ export const CreateUserSchema = z.object({
   username: z.string(),
   phone: z.string(),
   birthdate: z.preprocess((val) => {
-    if (typeof val !== 'string') {
+    if (typeof val !== 'string' && typeof val !== 'number') {
       return;
     }
 
-    return new Date(val);
-  }, z.date()),
+    return new Date(val).getTime();
+  }, z.number()),
   email: z.string(),
 });
 

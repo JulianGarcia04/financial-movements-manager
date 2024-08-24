@@ -20,7 +20,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     console.info('Http Error');
 
-    console.error(exception.message);
+    console.error({
+      name: exception.name,
+      message: exception.message,
+      stack: exception.stack,
+    });
 
     response.status(status).json({
       statusCode: status,

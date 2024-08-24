@@ -15,6 +15,19 @@
           :token="currentToken"
         />
         <login-first-step v-else @on-sign-in-by-email="handlerOnSignIn" />
+        <div class="row justify-center">
+          <q-btn
+            label="¿ No tienes cuenta ?"
+            class="q-my-sm"
+            to="/register"
+            text-color="primary"
+            outline
+            dense
+            flat
+            no-caps
+            unelevated
+          />
+        </div>
       </div>
     </div>
   </q-page>
