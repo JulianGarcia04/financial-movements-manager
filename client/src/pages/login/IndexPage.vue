@@ -3,7 +3,7 @@
     <div class="column full-height col-12 col-md-4">
       <div class="column justify-center items-center col-6 full-width">
         <img
-          src="src/assets/NBank.svg"
+          src="/NBank.svg"
           :style="{ height: '100px', width: '100px' }"
         />
         <span class="text-h3 text-white q-mt-sm logo-font">NBank</span>
