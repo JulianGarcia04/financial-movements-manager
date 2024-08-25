@@ -174,12 +174,11 @@ const handlerOnClickOpenMovementHandlerDialog = (type: Movement['type']) => {
     component: CreateMovementDialog,
     componentProps: {
       movementType: type,
-      totalAmmount: totalAmmount.value
+      totalAmmount: totalAmmount.value,
     },
-  })
-  .onOk(async () => {
-    await getMovements()
-  })
+  }).onOk(async () => {
+    await getMovements();
+  });
 };
 
 watchEffect(async () => {

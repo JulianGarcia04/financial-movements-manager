@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p class="text-caption text-grey-4">Agrega un correo electronico y nombre de usuario valido</p>
+    <p class="text-caption text-grey-4">
+      Agrega un correo electronico y nombre de usuario valido
+    </p>
     <div class="q-mt-md">
       <q-input
         v-model.trim="email"
@@ -31,7 +33,6 @@
 <script lang="ts" setup>
 import { defineModel } from 'vue';
 
-const email = defineModel('email', {required: true, type: String})
-const username = defineModel('username', {required: true, type: String})
-
+const email = defineModel('email', { required: true, type: String });
+const username = defineModel('username', { required: true, type: String });
 </script>

@@ -47,9 +47,9 @@ const fullname = computed(() => {
 });
 
 const handlerSignOut = () => {
-  authStore.setToken(undefined)
-  authStore.setUserId(undefined)
-  Cookies.remove('auth')
-  window.location.reload()
-}
+  authStore.setToken(undefined);
+  authStore.setUserId(undefined);
+  Cookies.remove('auth');
+  window.location.reload();
+};
 </script>

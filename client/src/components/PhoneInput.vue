@@ -26,7 +26,9 @@
           </q-item-section>
         </q-item>
       </template>
-      <template #selected-item="{ opt }:{opt: typeof flagsOptions['value'][0]}">
+      <template
+        #selected-item="{ opt }: { opt: (typeof flagsOptions)['value'][0] }"
+      >
         <q-avatar rounded size="xs">
           <q-img :src="opt.icon"></q-img>
         </q-avatar>
@@ -37,13 +39,16 @@
       type="tel"
       color="primary"
       label-color="primary"
-      class=" q-ml-sm col-9"
+      class="q-ml-sm col-9"
       :prefix="country?.value"
       input-class="text-white"
       :disable="!country"
       :rules="[
-        (value) => !Number.isNaN(Number(value)) || 'Solo puedes ingresar números',
-        (value) => parsePhoneNumber(value, country?.code)?.isValid() || 'Número invalido',
+        (value) =>
+          !Number.isNaN(Number(value)) || 'Solo puedes ingresar números',
+        (value) =>
+          parsePhoneNumber(value, country?.code)?.isValid() ||
+          'Número invalido',
       ]"
       outlined
       hide-bottom-space
@@ -54,59 +59,62 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
-import parsePhoneNumber, {CountryCode} from 'libphonenumber-js'
+import parsePhoneNumber, { CountryCode } from 'libphonenumber-js';
 
-import contries from 'src/assets/countries.json'
+import contries from 'src/assets/countries.json';
 
-const $emit = defineEmits(['update:modelValue'])
+const $emit = defineEmits(['update:modelValue']);
 
 defineProps({
   modelValue: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const country = ref<typeof flagsOptions['value'][0] | undefined>()
+const country = ref<(typeof flagsOptions)['value'][0] | undefined>();
 
-const rawPhone = ref('')
+const rawPhone = ref('');
 
 const flagsOptions = computed(() => {
   return contries.map((country) => {
     return {
       label: country.name,
-      icon:  `/src/assets/country-flags/${country.code.toLocaleLowerCase()}.png`,
+      icon: `/country-flags/${country.code.toLocaleLowerCase()}.png`,
       value: country.prefix,
-      code: country.code as CountryCode
-    }
-  })
-})
+      code: country.code as CountryCode,
+    };
+  });
+});
 
 const procesedPhone = computed({
-  get ():string {
+  get(): string {
     if (!country.value) {
-      return ''
+      return '';
     }
-    return String(parsePhoneNumber(rawPhone.value, country.value?.code)?.number)
+    return String(
+      parsePhoneNumber(rawPhone.value, country.value?.code)?.number
+    );
   },
-  set (newVal:string) {
-    rawPhone.value = newVal
-  }
-})
+  set(newVal: string) {
+    rawPhone.value = newVal;
+  },
+});
 
 watch(procesedPhone, (newVal) => {
-  $emit('update:modelValue', newVal)
-})
-
+  $emit('update:modelValue', newVal);
+});
 </script>
 <style lang="scss">
-
 .q-field > .q-field__inner > .q-field__control {
-  border: 1px solid $primary
+  border: 1px solid $primary;
 }
 
-.q-field > .q-field__inner > .q-field__control > .q-field__control-container > .q-field__prefix {
+.q-field
+  > .q-field__inner
+  > .q-field__control
+  > .q-field__control-container
+  > .q-field__prefix {
   color: white;
 }
-
 </style>

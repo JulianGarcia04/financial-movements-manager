@@ -10,7 +10,12 @@
             color="primary border-primary rounded-borders"
             label-color="primary"
             label="Valor del movimiento"
-            :rules="[(val) => (movementType !== 'egress' || val <= totalAmmount) || 'El valor ingresado es mayor al monto total de tu cuenta']"
+            :rules="[
+              (val) =>
+                movementType !== 'egress' ||
+                val <= totalAmmount ||
+                'El valor ingresado es mayor al monto total de tu cuenta',
+            ]"
             @update:model-value="handlerUpdateModelValueAmmountInput"
           >
             <template
@@ -51,11 +56,11 @@
 </template>
 <script lang="ts" setup>
 import { useDialogPluginComponent, useQuasar } from 'quasar';
-import { Money3Directive, unformat } from 'v-money3'
+import { Money3Directive, unformat } from 'v-money3';
 import { defineProps, PropType, ref } from 'vue';
 
 import { Movement, CreateMovementSchema } from 'src/models/Movement';
-import { api } from 'src/boot/axios'
+import { api } from 'src/boot/axios';
 
 interface CustomEvent extends EventTarget {
   value: unknown;
@@ -65,7 +70,7 @@ defineEmits([...useDialogPluginComponent.emits]);
 
 const { dialogRef, onDialogOK, onDialogCancel } = useDialogPluginComponent();
 
-const vMoney = Money3Directive
+const vMoney = Money3Directive;
 
 const moneyFormatForDirective = {
   decimal: '.',
@@ -79,7 +84,7 @@ const moneyFormatForDirective = {
   masked: true /* doesn't work with directive */,
 };
 
-const $q = useQuasar()
+const $q = useQuasar();
 
 const props = defineProps({
   movementType: {
@@ -88,8 +93,8 @@ const props = defineProps({
   },
   totalAmmount: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const newMovement = ref<Partial<Movement>>({
@@ -99,36 +104,39 @@ const newMovement = ref<Partial<Movement>>({
 });
 
 const handlerUpdateModelValueAmmountInput = (value: string) => {
-  newMovement.value.ammount = Number(unformat(value, moneyFormatForDirective))
-}
+  newMovement.value.ammount = Number(unformat(value, moneyFormatForDirective));
+};
 
 const handlerOnSubmitCreateNewMovement = async () => {
   try {
-    $q.loading.show()
+    $q.loading.show();
 
-    const checkMovement = CreateMovementSchema.parse(newMovement.value)
+    const checkMovement = CreateMovementSchema.parse(newMovement.value);
 
-    if (checkMovement.ammount > props.totalAmmount && checkMovement.type === 'egress') {
-      return
+    if (
+      checkMovement.ammount > props.totalAmmount &&
+      checkMovement.type === 'egress'
+    ) {
+      return;
     }
 
-    await api.post('movements/create', checkMovement)
+    await api.post('movements/create', checkMovement);
 
     $q.notify({
       message: 'El movimiento se creo correctamente',
-      color: 'positive'
-    })
+      color: 'positive',
+    });
 
-    onDialogOK()
+    onDialogOK();
   } catch (error) {
-    console.error(error)
+    console.error(error);
     $q.notify({
       message: 'Error interno al intentar realizar el movimiento',
-      color: 'negative'
-    })
-    onDialogCancel()
+      color: 'negative',
+    });
+    onDialogCancel();
   } finally {
-    $q.loading.hide()
+    $q.loading.hide();
   }
-}
+};
 </script>
