@@ -18,6 +18,8 @@ ENV DB_URI=
 
 ENV JWT_SECRET=
 
-EXPOSE 3000
+ENV PORT=
+
+EXPOSE ${PORT}
 
 CMD ["npm", "run", "start:prod"]
