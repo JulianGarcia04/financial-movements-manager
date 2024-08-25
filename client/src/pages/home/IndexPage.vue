@@ -4,17 +4,17 @@
     <section class="row justify-center full-width col-6">
       <div class="col-12 col-md-4 full-height relative-position">
         <q-img
-          src="src/assets/Ellipse 1.svg"
+          src="/Ellipse 1.svg"
           width="270px"
           class="absolute-top-left"
         />
         <q-img
-          src="src/assets/Ellipse 3.svg"
+          src="/Ellipse 3.svg"
           width="270px"
           class="absolute-top-right"
         />
         <q-img
-          src="src/assets/Ellipse 2.svg"
+          src="/Ellipse 2.svg"
           width="270px"
           style="position: absolute; bottom: 10%; left: 15%"
         >
@@ -41,7 +41,7 @@
             >
               <q-item-section avatar>
                 <q-avatar rounded class="border-primary rounded-borders">
-                  <img src="src/assets/NBank.svg" width="10px" height="10px" />
+                  <img src="/NBank.svg" width="10px" height="10px" />
                 </q-avatar>
               </q-item-section>
               <q-item-section>
