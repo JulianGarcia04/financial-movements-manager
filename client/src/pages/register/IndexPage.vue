@@ -51,7 +51,7 @@
           <q-btn
             label="¿ Ya tienes cuenta ?"
             class="q-my-sm"
-            to="/register"
+            to="/"
             text-color="primary"
             outline
             dense

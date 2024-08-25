@@ -2,9 +2,15 @@ version: '3.9'
 services:
   mongodb:
     image: 'mongo'
+    hostname: localhost
     ports:
       - 27017:27017
     volumes:
       - development:/data/db
+    networks:
+      - financial-movements-backend-net
 volumes:
   development:
+networks:
+  financial-movements-backend-net:
+    driver: bridge
