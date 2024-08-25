@@ -1,16 +1,9 @@
 steps:
-  - name: node
-    args:
-      - install
-    entrypoint: npm
-  - name: node
-    args:
-      - run
-      - prebuild
-    entrypoint: npm
-  - name: node
-    args:
-      - run
-      - build
+  - name: 'gcr.io/cloud-builders/docker'
+    script: |
+      docker build -t us-west2-docker.pkg.dev/$PROJECT_ID/financial-movements-backend/financial-movements-backend:tag1 .
+    automapSubstitutions: true
+images:
+  - 'us-west2-docker.pkg.dev/$PROJECT_ID/financial-movements-backend/financial-movements-backend:tag1'
 options:
   logging: CLOUD_LOGGING_ONLY
