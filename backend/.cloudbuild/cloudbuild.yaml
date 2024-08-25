@@ -1,0 +1,16 @@
+steps:
+  - name: node
+    args:
+      - install
+    entrypoint: npm
+  - name: node
+    args:
+      - run
+      - prebuild
+    entrypoint: npm
+  - name: node
+    args:
+      - run
+      - build
+options:
+  logging: CLOUD_LOGGING_ONLY
