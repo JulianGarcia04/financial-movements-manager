@@ -31,11 +31,14 @@
 </template>
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 import { useAuthStore } from 'src/stores/AuthStore';
 import { Cookies } from 'quasar';
 
 const authStore = useAuthStore();
+
+const $router = useRouter()
 
 const isOpenMenu = ref(false);
 
@@ -50,6 +53,6 @@ const handlerSignOut = () => {
   authStore.setToken(undefined);
   authStore.setUserId(undefined);
   Cookies.remove('auth');
-  window.location.reload();
+  $router.push('/')
 };
 </script>
